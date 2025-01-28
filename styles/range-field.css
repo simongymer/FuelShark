@@ -1,0 +1,66 @@
+.range-field {
+	display: flex;
+	align-items: center;
+    margin-bottom: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.range-field input {
+	-webkit-appearance: none;
+	appearance: none; 
+	width: 100%;
+	cursor: pointer;
+	outline: none;
+	border-radius: 15px;
+	height: 6px;
+	background: rgb(52, 58, 64);
+}  
+.range-field input[disabled] {
+	cursor: default;
+	opacity: 0.25;
+}
+
+.range-field input::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none; 
+	height: 22px;
+	width: 22px;
+	background-color: rgb(220, 53, 69);
+	border-radius: 50%;
+	border: none;
+	transition: .2s ease-in-out;
+}
+.range-field input[disabled]::-webkit-slider-thumb {
+	background-color: rgb(174, 167, 168);
+}
+.range-field input::-moz-range-thumb {
+	height: 15px;
+	width: 15px;
+	background-color: rgb(220, 0, 0);
+	border-radius: 50%;
+	border: none;
+	transition: .2s ease-in-out;
+}
+.range-field input[disabled]::-moz-range-thumb {
+	background-color: rgb(219, 210, 211);
+}
+  
+.range-field input:not([disabled])::-webkit-slider-thumb:hover {
+	box-shadow: 0 0 0 5px rgba(255,85,0, .1)
+}
+.range-field input:not([disabled]):active::-webkit-slider-thumb {
+	box-shadow: 0 0 0 5px rgba(255,85,0, .2)
+}
+.range-field input:not([disabled]):focus::-webkit-slider-thumb {
+	box-shadow: 0 0 0 5px rgba(255,85,0, .2)
+}
+
+.range-field input:not([disabled])::-moz-range-thumb:hover {
+	box-shadow: 0 0 0 5px rgba(255,85,0, .1)
+}
+.range-field input:not([disabled]):active::-moz-range-thumb {
+	box-shadow: 0 0 0 5px rgba(255,85,0, .2)
+}
+.range-field input:not([disabled]):focus::-moz-range-thumb {
+	box-shadow: 0 0 0 5px rgba(255,85,0, .2)    
+}

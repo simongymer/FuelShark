@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><meta name="HandheldFriendly" content="true" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="theme-color" content="#212529">
+    <link rel="manifest" href="manifest.json" />
+    <title>Fuel Calculator</title>
+    <link rel="stylesheet" href="styles/accordion.css">
+    <link rel="stylesheet" href="styles/radio-field.css">
+    <link rel="stylesheet" href="styles/range-field.css">
+    <link rel="stylesheet" href="styles/toggle-switch-field.css">
+    <link rel="stylesheet" href="styles/fuelshark.css">
+    <script src="scripts/fuelshark.js"></script>
+    <script src="scripts/startup.js"></script>
+</head>
+<body>
+    <div id="update-available" class="display-none">
+        <div>A new version of this app is available!</div>
+        <button type="button" id="reload">Update</button>
+    </div>
+    <div id="data-input">
+        <!-- Race Length -->
+        <div class="slider-field-container">
+            <div class="slider-info-bar extra-padding">
+                <div class="radio-field">
+                    <input type="radio" name="race-type" id="race-laps" value="1" checked onclick="onRaceTypeClicked();">
+                    <label for="race-laps">Race Laps</label>
+                </div>
+                <span id="race-laps-output" class="field-output">15 laps</span>
+            </div>
+            <div class="range-field">
+                <input type="range" id="race-laps-input" min="5" max="200" value="15" step="1" /> 
+            </div>
+        </div>
+        <div class="slider-field-container">
+            <div class="slider-info-bar extra-padding">
+                <div class="radio-field">
+                    <input type="radio" name="race-type" id="race-time" value="2" checked onclick="onRaceTypeClicked();">
+                    <label for="race-time">Race Time</label>
+                </div>
+                <div class="toggle-switch-and-output">
+                    <div class="toggle-switch-field">
+                        <label for="max-race-time"></label>
+                        <label class="switch">
+                            <input type="checkbox" role="switch" id="max-race-time" onclick="onMaxRaceTimeToggleSwitchClicked();">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <span id="race-time-output" class="field-output">0h 15m</span>
+                </div>
+            </div>
+            <div class="range-field">
+                <input type="range" id="race-time-input" min="5" max="180" value="15" step="5" /> 
+            </div>
+        </div>
+        
+        <!-- Extra laps -->
+        <div class="toggle-switches-field-container">
+            <div class="toggle-switch-field">
+                <label for="formation-lap">Formation Lap</label>
+                <label class="switch">
+                    <input type="checkbox" role="switch" checked id="formation-lap" onclick="onFormationLapToggleSwitchClicked();">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="toggle-switch-field">
+                <label for="cooldown-lap">Cooldown Lap</label>
+                <label class="switch">
+                    <input type="checkbox" role="switch" id="cooldown-lap" onclick="onCooldownLapToggleSwitchClicked();">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Lap data -->
+        <div class="slider-field-container">
+            <div class="slider-info-bar">
+                <label for="average-lap-time-input">Average Lap Time</label>
+                <div class="toggle-switch-and-output">
+                    <div class="toggle-switch-field">
+                        <label for="max-average-lap-time"></label>
+                        <label class="switch">
+                            <input type="checkbox" role="switch" id="max-average-lap-time" onclick="onMaxAverageLapTimeToggleSwitchClicked();">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <span id="average-lap-time-output" class="field-output">01:30</span>
+                </div>
+            </div>
+            <div class="range-field">
+                <input type="range" id="average-lap-time-input" min="5" max="300" value="90" step="1" /> 
+            </div>
+        </div>
+        <div class="slider-field-container">
+            <div class="slider-info-bar">
+                <label for="fuel-per-lap-input">Fuel Per Lap</label>
+                <div class="toggle-switch-and-output">
+                    <div class="toggle-switch-field">
+                        <label for="max-fuel-per-lap"></label>
+                        <label class="switch">
+                            <input type="checkbox" role="switch" id="max-fuel-per-lap" onclick="onMaxFuelPerLapToggleSwitchClicked();">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <span id="fuel-per-lap-output" class="field-output">2 litres</span>
+                </div>
+            </div>
+            <div class="range-field">
+                <input type="range" id="fuel-per-lap-input" min="5" max="500" value="250" step="1" />
+            </div> 
+        </div>
+
+        <!-- Pit stops -->
+        <div class="accordion" id="pit-stop-accordian" >
+            <div class="accordion-item">
+                <input type="checkbox" id="pit-stops-accordion-item">
+                <label for="pit-stops-accordion-item">
+                    <span>Pit Stops</span>
+                    <span id="pit-stop-count-output2" class="field-output white-space-nowrap">0 stops</span>
+                </label>
+                <div class="accordion-item-body">
+                    <div class="slider-field-container">
+                        <div class="slider-info-bar">
+                            <label for="average-lap-time-input">Pit Stop Time</label>
+                            <span id="pit-stop-time-output" class="field-output">00:40</span>
+                        </div>
+                        <div class="range-field">
+                            <input type="range" id="pit-stop-time-input" min="5" max="180" value="40" step="1" /> 
+                        </div>
+                    </div>
+                    <div class="slider-field-container">
+                        <div class="slider-info-bar">
+                            <label for="pit-stop-count-input">Pit Stop Count</label>
+                            <span id="pit-stop-count-output" class="field-output">0 stops</span>
+                        </div>
+                        <div class="range-field">
+                            <input type="range" id="pit-stop-count-input" min="0" max="50" value="0" step="1" /> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="data-output">
+        <!-- Total fuel -->
+        <div class="total-fuel">
+            <span class="text-uppercase">Total Fuel</span>
+            <span class="field-output" id="total-fuel-output">25 litres</span>
+        </div>
+    </div>
+</body>

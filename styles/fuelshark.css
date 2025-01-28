@@ -1,0 +1,168 @@
+* {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	touch-action: none;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding: .5rem;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	background-color: rgb(33, 37, 41);
+	color: rgb(222, 226, 230);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-size: 1rem;
+	width: calc(100% - 1rem);
+	height: calc(100% - 1rem);
+}
+
+#update-available {
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#update-available > button {
+	padding: 1.5em;
+	color: white;
+	background-color: darkgrey;
+	text-transform: uppercase;
+	margin: 1em;
+	border-radius: 0.5em;
+	border: 0;
+	opacity: 0.85;
+	font-weight: bold;
+}
+
+#update-available > button:hover {
+	opacity: 1;
+}
+
+hr {
+    margin: 1rem 0;
+    color: inherit;
+    border: 0;
+    border-top: 1px solid rgb(222, 226, 230);
+    opacity: .25;
+}
+
+.white-space-nowrap {
+	white-space: nowrap;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.display-none {
+	display: none !important;
+}
+
+.slider-field-container,
+.toggle-switches-field-container {
+	/* border: 1px solid rgb(73 80 87 / 65%); */
+	margin-bottom: 0.5rem;
+	padding-bottom: 0.25rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 0.75rem;
+	border-radius: 0.375rem;
+}
+.toggle-switches-field-container {
+	padding-bottom: 0.5rem;
+	padding-top: 0.75rem;
+}
+.toggle-switches-field-container > .toggle-switch-field {
+    margin-bottom: 0.75rem;
+}
+.toggle-switches-field-container > .toggle-switch-field:last-child {
+    margin-bottom: 0.25rem;
+}
+
+.accordion-item-body > .slider-field-container:last-child {
+	margin-bottom: 0;
+}
+
+.slider-info-bar {
+	display: flex;
+	justify-content: space-between;
+    padding-bottom: .25em;
+}
+
+.slider-info-bar.extra-padding {
+    padding-top: .25em;
+}
+
+.field-output {
+	color: rgb(223, 116, 126);
+}
+
+#data-input,
+#data-output {
+	border-radius: 0.375rem;
+	border: 1px solid rgb(73 80 87 / 65%);
+}
+
+#data-output {
+	margin-top: .5em;
+    background-color: #1d2023;
+    overflow: hidden;
+	height: 100%;
+}
+
+.total-fuel {
+	padding: 1.5rem 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.25rem;
+	font-weight: 500;
+	border-radius: 0.375rem;
+    height: calc(100% - 3rem);
+}
+.total-fuel .field-output {
+	color: rgb(220, 53, 69);
+	font-weight: 700;
+}
+
+.toggle-switch-and-output {
+	display: flex;
+}
+.toggle-switch-and-output .field-output {
+	margin-left: 1em;
+}
+.toggle-switch-and-output .toggle-switch-field > .switch > input#max-race-time + .slider:before {
+  content: "3H";
+}
+.toggle-switch-and-output .toggle-switch-field > .switch > input#max-race-time:checked + .slider:before {
+  content: "24H";
+}
+.toggle-switch-and-output .toggle-switch-field > .switch > input#max-fuel-per-lap + .slider:before {
+  content: "5l";
+}
+.toggle-switch-and-output .toggle-switch-field > .switch > input#max-fuel-per-lap:checked + .slider:before {
+  content: "25l";
+}
+.toggle-switch-and-output .toggle-switch-field > .switch > input#max-average-lap-time + .slider:before {
+  content: "5m";
+}
+.toggle-switch-and-output .toggle-switch-field > .switch > input#max-average-lap-time:checked + .slider:before {
+  content: "10m";
+}

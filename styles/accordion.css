@@ -1,0 +1,52 @@
+.accordion {
+	border-radius: 8px;
+	overflow: hidden;
+	/* border: 1px solid rgb(73 80 87 / 65%); */
+}
+  
+.accordion-item {
+	width: 100%;
+	overflow: hidden;
+}
+
+.accordion-item > input {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+
+.accordion-item > label {
+	display: flex;
+	justify-content: space-between;
+	padding: 1em;
+	padding-bottom: 1.5em;
+	cursor: pointer;
+}
+
+.accordion-item > label > span:last-child::after {
+	content: "❯";
+	width: 1em;
+	height: 1em;
+	text-align: center;
+	transition: all 0.35s;
+	margin-left: 1em;
+	color: white;
+	display: inline-block;
+}
+
+.accordion-item-body {
+	max-height: 0;
+	transition: all 0.35s;
+	display: none;
+}
+
+.accordion-item > input:checked + label > span:last-child::after {
+	transform: rotate(90deg);
+}
+
+.accordion-item > input:checked ~ .accordion-item-body {
+	max-height: 100vh;
+	padding: 0.5em;
+	padding-top: 0;
+	display: block;
+}
